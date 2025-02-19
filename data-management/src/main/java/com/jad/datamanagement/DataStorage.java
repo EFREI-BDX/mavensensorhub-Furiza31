@@ -1,11 +1,12 @@
 package com.jad.datamanagement;
 
-import com.jad.sensordata.SensorData;
-import com.jad.sensordata.SensorType;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import com.jad.common.IDataStorage;
+import com.jad.common.SensorData;
+import com.jad.common.SensorType;
 
 class DataStorage implements IDataStorage {
     private final List<SensorData> storage = new ArrayList<>();

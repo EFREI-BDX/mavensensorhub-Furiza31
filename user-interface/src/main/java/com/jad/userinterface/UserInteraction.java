@@ -3,6 +3,8 @@ package com.jad.userinterface;
 import java.text.MessageFormat;
 import java.util.Scanner;
 
+import com.jad.common.UserAction;
+
 class UserInteraction {
     public UserAction getUserPrompt() {
         for (UserAction userAction : UserAction.values()) {

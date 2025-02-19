@@ -1,8 +1,10 @@
 package com.jad.userinterface;
 
-import com.jad.sensordata.SensorData;
-
 import java.util.List;
+
+import com.jad.common.IApplication;
+import com.jad.common.IUserInterface;
+import com.jad.common.SensorData;
 
 public class UserInterface implements IUserInterface {
     private final Dashboard dashboard;

@@ -4,6 +4,9 @@ import java.text.MessageFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import com.jad.common.ILogger;
+import com.jad.common.LogType;
+
 class Logger implements ILogger {
     private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
@@ -15,9 +18,9 @@ class Logger implements ILogger {
     @Override
     public void log(LogType logType, String message) {
         System.out.println(MessageFormat.format("[{0}] {1} : {2}",
-                                                logType.getLogType(),
-                                                LocalDateTime.now().format(Logger.DATE_TIME_FORMATTER),
-                                                message));
+                logType.getLogType(),
+                LocalDateTime.now().format(Logger.DATE_TIME_FORMATTER),
+                message));
     }
 
     @Override

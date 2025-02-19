@@ -1,12 +1,13 @@
 package com.jad.datamanagement;
 
-import com.jad.sensordata.SensorData;
-import com.jad.sensordata.SensorType;
-
 import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.DoubleStream;
+
+import com.jad.common.IDataProcessor;
+import com.jad.common.SensorData;
+import com.jad.common.SensorType;
 
 class DataProcessor implements IDataProcessor {
     private final DataStorage dataStorage;

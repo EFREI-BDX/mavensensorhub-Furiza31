@@ -1,6 +1,4 @@
-package com.jad.reportgeneration;
-
-import com.jad.sensordata.SensorData;
+package com.jad.common;
 
 import java.util.List;
 

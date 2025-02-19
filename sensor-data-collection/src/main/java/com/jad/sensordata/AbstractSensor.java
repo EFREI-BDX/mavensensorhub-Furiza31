@@ -1,8 +1,11 @@
 package com.jad.sensordata;
 
-import com.jad.utils.Utils;
-
 import java.util.Random;
+
+import com.jad.common.ISensor;
+import com.jad.common.SensorData;
+import com.jad.common.SensorType;
+import com.jad.utils.Utils;
 
 abstract class AbstractSensor implements ISensor {
     static final int START_VALUE = 99999;
@@ -32,14 +35,15 @@ abstract class AbstractSensor implements ISensor {
     public final double getValue() {
         Utils.LOGGER.logInfo("Collecting data from " + this.sensorType.getSensorName() + " sensor");
         if (this.lastValue == AbstractSensor.START_VALUE) {
-            this.lastValue = this.sensorType.getMinValue() + (this.sensorType.getMaxValue() - this.sensorType.getMinValue()) * this.random.nextDouble();
+            this.lastValue = this.sensorType.getMinValue()
+                    + (this.sensorType.getMaxValue() - this.sensorType.getMinValue()) * this.random.nextDouble();
         } else {
             double maxDifference = (this.sensorType.getMaxValue() - this.sensorType.getMinValue())
                     * AbstractSensor.MAX_PERCENTAGE_DIFFERENCE;
             this.lastValue = Math.max(this.sensorType.getMinValue(),
-                                      Math.min(this.sensorType.getMaxValue(),
-                                               this.lastValue + (maxDifference * this.random.nextDouble() * (
-                                                       this.random.nextBoolean() ? 1 : -1))));
+                    Math.min(this.sensorType.getMaxValue(),
+                            this.lastValue + (maxDifference * this.random.nextDouble()
+                                    * (this.random.nextBoolean() ? 1 : -1))));
         }
         return this.lastValue;
     }

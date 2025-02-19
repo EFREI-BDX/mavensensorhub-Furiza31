@@ -1,8 +1,10 @@
 package com.jad.reportgeneration;
 
-import com.jad.sensordata.SensorData;
-
 import java.util.List;
+
+import com.jad.common.IReportGenerator;
+import com.jad.common.ReportType;
+import com.jad.common.SensorData;
 
 public class ReportGenerator implements IReportGenerator {
     @Override

@@ -1,8 +1,9 @@
 package com.jad.reportgeneration;
 
-import com.jad.sensordata.SensorData;
-
 import java.text.MessageFormat;
+
+import com.jad.common.ReportType;
+import com.jad.common.SensorData;
 
 class TextReportGenerator extends AbstractReportGenerator {
 
@@ -20,10 +21,10 @@ class TextReportGenerator extends AbstractReportGenerator {
     @Override
     protected String SensorDataToReport(final SensorData sensorData) {
         return MessageFormat.format("Sensor Type: {0}, Value: {1} {2}, Timestamp: {3}",
-                                    sensorData.sensorType().name(),
-                                    sensorData.value(),
-                                    sensorData.unit(),
-                                    sensorData.time().toString());
+                sensorData.sensorType().name(),
+                sensorData.value(),
+                sensorData.unit(),
+                sensorData.time().toString());
 
     }
 

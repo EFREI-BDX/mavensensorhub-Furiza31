@@ -1,16 +1,17 @@
 package com.jad.datamanagement;
 
-import com.jad.sensordata.ISensor;
-import com.jad.sensordata.SensorData;
-import com.jad.sensordata.SensorType;
-import com.jad.utils.Utils;
-
 import java.text.MessageFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+
+import com.jad.common.IDataManager;
+import com.jad.common.ISensor;
+import com.jad.common.SensorData;
+import com.jad.common.SensorType;
+import com.jad.utils.Utils;
 
 public class DataManager implements IDataManager {
     private final List<DataCollector> dataCollectors = new ArrayList<>();
@@ -22,11 +23,10 @@ public class DataManager implements IDataManager {
     public DataManager() {
     }
 
-
     @Override
     public final void addDataCollector(final ISensor sensor) {
         Utils.LOGGER.logInfo(MessageFormat.format("Adding {0} sensor to data collectors",
-                                                  SensorType.getName(sensor.getSensorType())));
+                SensorType.getName(sensor.getSensorType())));
         this.dataCollectors.add(new DataCollector(sensor));
     }
 
@@ -44,7 +44,7 @@ public class DataManager implements IDataManager {
 
     private void collectAndStoreData(DataCollector dataCollector) {
         Utils.LOGGER.logInfo(MessageFormat.format("Collecting and storing data from {0} sensor",
-                                                  SensorType.getName(dataCollector.getSensorType())));
+                SensorType.getName(dataCollector.getSensorType())));
         dataCollector.collectData();
         for (SensorData sensorData : dataCollector.getAllCollectedData()) {
             if (this.dataValidator.validate(this.dataProcessor, sensorData)) {

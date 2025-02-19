@@ -1,12 +1,12 @@
 package com.jad.datamanagement;
 
-import com.jad.sensordata.ISensor;
-import com.jad.sensordata.SensorData;
-import com.jad.sensordata.SensorType;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import com.jad.common.ISensor;
+import com.jad.common.SensorData;
+import com.jad.common.SensorType;
 
 class DataCollector {
     private final ISensor sensor;

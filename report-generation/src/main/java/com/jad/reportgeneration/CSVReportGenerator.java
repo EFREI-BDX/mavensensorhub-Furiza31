@@ -1,11 +1,12 @@
 package com.jad.reportgeneration;
 
-import com.jad.sensordata.SensorData;
-import com.jad.utils.Utils;
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.MessageFormat;
+
+import com.jad.common.ReportType;
+import com.jad.common.SensorData;
+import com.jad.utils.Utils;
 
 class CSVReportGenerator extends AbstractReportGenerator {
 
@@ -18,19 +19,19 @@ class CSVReportGenerator extends AbstractReportGenerator {
     @Override
     protected String generateHeader() {
         return MessageFormat.format("{0},{1},{2},{3}",
-                                    "Sensor Type",
-                                    "Value",
-                                    "Unit",
-                                    "Timestamp");
+                "Sensor Type",
+                "Value",
+                "Unit",
+                "Timestamp");
     }
 
     @Override
     protected String SensorDataToReport(final SensorData sensorData) {
         return MessageFormat.format("{0},{1},{2},{3}",
-                                    sensorData.sensorType().name(),
-                                    sensorData.value(),
-                                    sensorData.unit(),
-                                    sensorData.time().toString());
+                sensorData.sensorType().name(),
+                sensorData.value(),
+                sensorData.unit(),
+                sensorData.time().toString());
     }
 
     @Override

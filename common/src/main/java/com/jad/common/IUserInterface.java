@@ -1,6 +1,4 @@
-package com.jad.userinterface;
-
-import com.jad.sensordata.SensorData;
+package com.jad.common;
 
 import java.util.List;
 

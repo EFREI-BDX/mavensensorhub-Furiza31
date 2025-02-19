@@ -1,10 +1,11 @@
 package com.jad.reportgeneration;
 
-import com.jad.sensordata.SensorData;
-import com.jad.utils.Utils;
-
 import java.text.MessageFormat;
 import java.util.List;
+
+import com.jad.common.ReportType;
+import com.jad.common.SensorData;
+import com.jad.utils.Utils;
 
 abstract class AbstractReportGenerator {
     private final ReportType reportType;
@@ -15,8 +16,8 @@ abstract class AbstractReportGenerator {
 
     public void generateReport(List<SensorData> data) {
         Utils.LOGGER.logInfo(MessageFormat.format("Generating {0} report for {1} sensor data",
-                                                  this.reportType.getName(),
-                                                  data.size()));
+                this.reportType.getName(),
+                data.size()));
         StringBuilder report = new StringBuilder();
         report.append(this.generateHeader()).append("\n");
         for (SensorData sensorData : data) {

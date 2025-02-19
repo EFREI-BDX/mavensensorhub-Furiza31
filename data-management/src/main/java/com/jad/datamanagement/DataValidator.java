@@ -1,9 +1,9 @@
 package com.jad.datamanagement;
 
-import com.jad.sensordata.SensorData;
-
 import java.time.Duration;
 import java.util.Optional;
+
+import com.jad.common.SensorData;
 
 class DataValidator {
     private final static double MAX_PERCENTAGE_DIFFERENCE_IN_ONE_MINUTE = 0.01;
@@ -21,11 +21,13 @@ class DataValidator {
     private boolean validateTimeDifference(DataProcessor dataProcessor, SensorData sensorData) {
         Optional<SensorData> lastSensorData = dataProcessor.calculateLastSensorDataBySensorType(
                 sensorData.sensorType());
-        if (lastSensorData.isEmpty()) return true;
+        if (lastSensorData.isEmpty())
+            return true;
         double maxDifference = (sensorData.getMaxValue() - sensorData.getMinValue())
                 * DataValidator.MAX_PERCENTAGE_DIFFERENCE_IN_ONE_MINUTE;
         double minutesDifference = DataValidator.getTimeDifference(sensorData, lastSensorData.get());
-        if (minutesDifference == 0) minutesDifference = 1;
+        if (minutesDifference == 0)
+            minutesDifference = 1;
         return maxDifference >= (DataValidator.getValueDifference(sensorData, lastSensorData.get())
                 / minutesDifference);
     }
